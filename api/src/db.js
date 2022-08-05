@@ -62,8 +62,7 @@ const {
 //Entity-relations
 Brand.hasMany(Product);
 Product.belongsTo(Brand);
-Product.belongsToMany(User, { through: "Wish_List" });
-User.belongsToMany(Product, { through: "Wish_List" });
+
 
 module.exports = {
   ...sequelize.models,

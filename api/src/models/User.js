@@ -29,17 +29,12 @@ module.exports = (sequelize) => {
     role: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: "user",
+      defaultValue: "admin",
     },
     tokens: {
       type: DataTypes.ARRAY(DataTypes.TEXT),
       defaultValue: [],
-    },
-
-    tokens: {
-      type: DataTypes.ARRAY(DataTypes.TEXT),
-      defaultValue: [],
-    },
+    },    
 
     isActive: {
       type: DataTypes.BOOLEAN,

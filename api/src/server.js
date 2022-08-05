@@ -4,12 +4,13 @@ const morgan = require("morgan");
 const {
   productRouter,
   userRouter, 
-  brandRouter, 
-  wishlistRouter,
+  brandRouter
 } = require("./routes/allRoutes.js");
 const server = express();
 const cors = require("cors");
 require("dotenv").config();
+
+require("./db.js")
 
 //Adding middleware and configuring server
 server.name = "API";
@@ -41,7 +42,7 @@ server.use((req, res, next) => {
 server.use("/api", productRouter);
 server.use("/api", userRouter);
 server.use("/api", brandRouter);
-server.use("/api", wishlistRouter);
+
 
 // Error catching endware.
 server.use((err, req, res, next) => {
