@@ -22,13 +22,14 @@ const getBrands = async (req, res, next) => {
 
 const createBrand = async (req, res, next) => {
   try {
-    let { name } = req.body;
+    let { name, logo_url } = req.body;
     if (!name) {
       res.status(400).send({ errorMsg: "Missing data" });
     } else {
       const [newBrand, created] = await Brand.findOrCreate({
         where: {
           name,
+          logo_url
         },
       });
       created

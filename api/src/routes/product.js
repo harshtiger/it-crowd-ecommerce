@@ -11,6 +11,7 @@ const {
 
 const productRouter = express.Router();
 const { isLoggedIn, isAdmin } = require("../middleware/auth");
+const checkAuth = require("../utils/checktoken")
 
 //guests and users
 // these endpoints, as requested by the challenge, do not need an auth middleware
@@ -19,7 +20,7 @@ productRouter.get("/products/:id", getSingleProduct);
 
 //admin
 productRouter.put("/admin/products/:id", isLoggedIn, isAdmin, updateProduct);
-productRouter.post("/admin/products", isLoggedIn, isAdmin, createProduct);
+productRouter.post("/admin/products", isLoggedIn, isAdmin,  createProduct);
 productRouter.delete("/admin/products/del/:id", isLoggedIn, isAdmin, deleteProduct);
 
 

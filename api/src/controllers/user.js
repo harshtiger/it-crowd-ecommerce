@@ -1,8 +1,9 @@
 const  {User}   = require("../db");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+const jsonwt = require("jsonwebtoken");
 const sequelize = require("sequelize");
 require("dotenv").config();
+const {generateToken} = require("../utils/tokenmag")
 
 
 
@@ -10,41 +11,32 @@ require("dotenv").config();
 
 
 const createUser = async (req, res) => {
+  
+
+  let { name, surname, email, password} = req.body;
   try {
-    let { name, surname, email, password} = req.body;
     if (!name || !surname || !email ||  !password) {
       res.status(400).send({ errorMsg: "Missing data." });
-    } else {
-      const isUserCreated = await User.findOne({
-        where: {
-          email
-          
-        },
-      });
-      if (isUserCreated) {
-        res.status(400).send({ errorMsg: "Email already exists." });
-      } else {
-        password = await bcrypt.hash(password, 8);
-
-        const isActive = true;
-        const newUser = await User.create({
-          name,
-          surname,
-          email,
-          password,
-          isActive,
-        });
-        const token = jwt.sign({ id: newUser.id }, process.env.SECRET_KEY);
-        console.log(token)
-        
-        res.status(201).send({
-          successMsg: "User activation email sent.",
-        });
-      }
+    } else{
+    const userExists = await User.findOne({ where: { email } });
+    if (userExists) {
+      return res.status(400).json({ error: "Email already registered" });
     }
-  } catch (error) {
-    res.status(500).json({ errorMsg: error.message });
-  }
+
+    const newUser = await User.create({
+      name,
+      surname,      
+      email,
+      password: await bcrypt.hash(password, 10),
+    });
+
+    res.status(200).json(newUser);
+
+  } 
+}catch (err) {
+  console.error(err);
+}
+;
 };
 
 
@@ -61,24 +53,21 @@ const signIn = async (req, res) => {
        
       },
     });
-    if (!user) {
-      return res.status(404).send({ errorMsg: "Email or password is wrong." });
-    }
+  
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).send({ errorMsg: "Invalid password." });
     }
-    if (!user.isActive) {
-      return res.status(400).send({ errorMsg: "User is not active." });
-    }
-    const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY);
-    await User.update(
-      { tokens: sequelize.fn("array_append", sequelize.col("tokens"), token) },
-      { where: { id: user.id } }
+  
+    const token = jsonwt.sign({ id: user.id }, process.env.SECRET_KEY);
+    await user.update(
+      
+      { tokens: sequelize.fn("array_append", sequelize.col("tokens"), token ) },
+      { where: { "id": user.id } }
     );
     res.header("auth-token", token).send({
       successMsg: "You signed in successfully.",
-      data: { name: user.name, role: user.role, tokens: user.tokens },
+      data: { name: user.name, role: user.role, token: user.tokens },
     });
   } catch (error) {
     res.status(500).send({ errorMsg: error.message });
