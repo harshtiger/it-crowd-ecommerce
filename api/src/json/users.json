@@ -1,0 +1,11 @@
+[
+    {
+        "name": "Sam",
+        "surname": "Centeno",
+        "password": "sarasa",
+        "email": "test@email.com",
+        "role": "admin",
+        "isActive": true
+         }
+
+]

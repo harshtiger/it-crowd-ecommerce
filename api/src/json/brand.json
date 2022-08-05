@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Motorola",
+        "logo_url":"https://1000marcas.net/wp-content/uploads/2020/01/Motorola-Logo-1.png"
+      },
+      {
+        "name": "Apple",
+        "logo_url":"https://img2.freepng.es/20180517/eyw/kisspng-apple-logo-carplay-apple-logo-5afe3f3e3fcbb3.0667087115266117742613.jpg"
+      },
+      {
+        "name": "Samsung",
+        "logo_url":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Logo_samsung.jpg/800px-Logo_samsung.jpg?20080206003117"
+        
+      },
+      {
+        "name": "Xiaomi",
+        "logo_url":"https://s1.eestatic.com/2021/03/30/omicrono/hardware/569954632_176909754_1706x960.jpg"
+    },
+      {
+        "name": "Nokia",
+        "logo_url":"https://www.nokia.com/sites/default/files/styles/scale_543_x_375_gallery/public/2022-03/NOKIA_LOGO_WHITE_HR.jpg"
+      },
+      {
+        "name": "Sony",
+        "logo_url":"https://upload.wikimedia.org/wikipedia/commons/c/c5/Sony_logos.JPG"
+      }
+
+
+
+]

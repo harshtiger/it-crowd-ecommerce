@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Motorola G100",
+    "image": "https://i0.wp.com/computertaal.info/wp-content/uploads/2021/05/moto-g100-Iridescent-Sky-hero-2048x2048.jpg?resize=650,400",
+    "price": "US$ 498.99",
+    "description":"With the Moto g100, Motorola successfully delivers a powerful set of features in a mid-range package. Any flaws in the premium-like experience are made up for by more unique features like the ReadyFor mode or the secondary ultrawide selfie camera.",
+    "stock": 5,
+    "BrandId": 1
+  },
+  {
+    "name": "Apple Iphone 13",
+    "image": "https://www.apple.com/newsroom/images/product/iphone/geo/Apple_HowToBuy_iPhone-13-Pro_GEO_09162021_carousel.jpg.large.jpg",
+    "price": "US$ 1498.99",
+    "description":"The iPhone 13's brighter display, longer battery life and powerful cameras make it the best iPhone for the money. But we wish it had faster charging and the iPhone 13 Pro's adaptive 120Hz display.",
+        "stock": 5,
+    "BrandId": 2
+  },
+
+  {
+    "name": "Samsung s22",
+    "image": "https://img.global.news.samsung.com/mx/wp-content/uploads/2022/02/Galaxy-S22-S22-pr_main2.jpg",
+    "price": "US$ 1398.99",
+    "description":"The Samsung Galaxy S22 Ultra is an amped-up Galaxy Note with a faster S Pen built in, lots of camera improvements, a brighter display and faster charging. This is a stellar phone overall, but it's also pretty pricey and the battery life could be better.",
+        "stock": 5,
+    "BrandId": 3
+  },
+
+  {
+    "name": "Xiaomi 12 pro",
+    "image": "https://ar.celulares.com/fotos/xiaomi-12-pro-93480-g-alt.jpg",
+    "price": "US$ 498.99",
+    "description":"Xiaomi's Mi 11 Ultra (Review) was all about big numbers and bragging rights, and it managed to deliver a very good premium Android experience with only a few shortcomings.The Xiaomi 12 Pro is the company's most premium offering yet for 2022 and Xiaomi has taken a slightly different approach with it. Rather than simply pushing for the biggest numbers on a specs page like it did with the 11 Ultra, Xiaomi claims it has focused more on consistency while still packing enough premium features to justify the price. A quick look at the specs reveals the usual suspects in terms of hardware, but the quad-speaker setup in the Xiaomi 12 Pro is certainly unique and not something we've seen in any flagship phone in India.",
+        "stock": 5,
+    "BrandId": 4
+  },
+
+  {
+    "name": "nokia 24 m",
+    "image": "https://images.ctfassets.net/wcfotm6rrl7u/1e656RP6G47K7JexEDgZ1c/007fb87ea3e50af066c401862338c537/nokia-2_4-fjord-front_back-int.png?h=600&fm=avif",
+    "price": "US$ 498.99",
+    "description":"",
+        "stock": 5,
+    "BrandId": 5
+  }
+ 
+]

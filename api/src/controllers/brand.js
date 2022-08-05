@@ -29,7 +29,7 @@ const createBrand = async (req, res, next) => {
       const [newBrand, created] = await Brand.findOrCreate({
         where: {
           name,
-          logo_url
+          logo_url,
         },
       });
       created
