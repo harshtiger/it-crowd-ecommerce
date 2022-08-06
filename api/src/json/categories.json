@@ -1,0 +1,33 @@
+[
+    {
+        "name": "Cellphones"
+      },
+      {
+        "name": "Accesories"
+      },
+      {
+        "name": "Audio"
+      },
+      {
+        "name": "Generic"
+      },
+      {
+        "name": "warranties"
+      },
+      
+    {
+      "name": "Electronics"
+    },
+    {
+      "name": "Services"
+    },
+    {
+      "name": "Other"
+    },
+    {
+      "name": "Reservations"
+    },
+    {
+      "name": "Technical service"
+    }
+]

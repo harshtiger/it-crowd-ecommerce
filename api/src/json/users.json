@@ -2,7 +2,7 @@
     {
         "name": "Sam",
         "surname": "Centeno",
-        "password": "sarasa",
+        "password": "sarasa1",
         "email": "test@email.com",
         "role": "admin",
         "isActive": true

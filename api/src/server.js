@@ -4,7 +4,10 @@ const morgan = require("morgan");
 const {
   productRouter,
   userRouter, 
-  brandRouter
+  brandRouter,
+  categoryRouter,
+  subCategoryRouter
+
 } = require("./routes/allRoutes.js");
 const server = express();
 const cors = require("cors");
@@ -42,6 +45,8 @@ server.use((req, res, next) => {
 server.use("/api", productRouter);
 server.use("/api", userRouter);
 server.use("/api", brandRouter);
+server.use("/api", categoryRouter);
+server.use("/api", subCategoryRouter);
 
 
 // Error catching endware.

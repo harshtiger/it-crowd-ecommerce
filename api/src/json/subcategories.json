@@ -1,0 +1,9 @@
+[
+    
+  { "name": "High end", "category_id": 1 },
+  { "name": "Entry level", "category_id": 2 },
+  { "name": "Wireless audio", "category_id": 3 },
+  { "name": "PC audio", "category_id": 4 },
+  { "name": "Original accesories", "category_id": 5 },
+  { "name": "Generic accesories", "category_id": 6 }
+]

@@ -54,14 +54,26 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 //Models
 const {
+  Category,
   Brand,
   Product,
   User,
+  Subcategory,
+  Order,
+  Order_detail
 } = sequelize.models;
 
 //Entity-relations
 Brand.hasMany(Product);
 Product.belongsTo(Brand);
+Category.hasMany(Subcategory);
+Subcategory.belongsTo(Category);
+Order.hasMany(Order_detail);
+Order_detail.belongsTo(Order);
+Product.hasMany(Order_detail);
+Order_detail.belongsTo(Product);
+User.hasMany(Order);
+Order.belongsTo(User);
 
 
 module.exports = {

@@ -17,7 +17,8 @@ const {
         description,
         image,       
         stock,             
-        BrandId
+        BrandId,
+        weight
       } = req.body;
       if (
         !name ||        
@@ -25,7 +26,8 @@ const {
         !image ||
         !price ||
         !description ||     
-        !stock
+        !stock ||
+        ! weight
       ) {
         res.status(402).send({ errorMsg: 'Missing data.' });
       } else {
@@ -36,7 +38,8 @@ const {
             description,
             image,           
             stock,
-            BrandId
+            BrandId,
+            weight
           },
         });
         created
@@ -60,7 +63,8 @@ const {
         price,
         image,       
         stock,       
-        BrandId      
+        BrandId,
+        weight      
       } = req.body;
       if (
         !name ||
@@ -68,7 +72,8 @@ const {
         !price ||
         !image ||      
         !stock ||        
-        !BrandId ||        
+        !BrandId ||  
+        ! weight||      
         !id
       ) {
         res.status(402).send({ errorMsg: 'Missing data.' });
@@ -87,7 +92,8 @@ const {
             description,
             image,           
             stock,           
-            BrandId         
+            BrandId,
+            weight         
           });
           res.status(200).send({
             successMsg: 'Product successfully updated.',
@@ -129,7 +135,8 @@ const {
             stock: singleProduct.stock,            
             BrandId: singleProduct.BrandId,
             brand: singleProduct.Brand.name,           
-            isActive: singleProduct.isActive
+            isActive: singleProduct.isActive,
+            weight: singleProduct.weight
           }
             
             
@@ -167,7 +174,8 @@ const {
             description: product.description,     
             stock: product.stock,           
             BrandId: product.BrandId,
-            brand: product.Brand.name,            
+            brand: product.Brand.name,
+            weight: product.weight,            
             isActive: product.isActive                       
           };
         });

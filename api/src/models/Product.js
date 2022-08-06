@@ -27,6 +27,15 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
       allowNull: true,
     },
+    soldCount: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+      allowNull: false,
+    },
+    weight: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
     stock: {
       type: DataTypes.INTEGER,
       allowNull: false,

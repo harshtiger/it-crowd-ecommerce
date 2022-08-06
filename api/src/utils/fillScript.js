@@ -1,8 +1,8 @@
 const {
   Brand,
-
+  Category,
   Product,
-
+  Subcategory,
   User,
 } = require("../db");
 const fs = require("fs");
@@ -10,6 +10,42 @@ const axios = require("axios");
 const bcrypt = require("bcrypt");
 
 //Just to fill the db.
+
+const bulkCreateCategories = async () => {
+  try {
+    let data = fs.readFileSync(__dirname + "/../json/categories.json", "utf8");
+    data = JSON.parse(data);
+    for (let i = 0; i < data.length; i++) {
+      await Category.findOrCreate({
+        where: {
+          name: data[i].name,
+        },
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const bulkCreateSubcategories = async () => {
+  try {
+    let data = fs.readFileSync(
+      __dirname + "/../json/subcategories.json",
+      "utf8"
+    );
+    data = JSON.parse(data);
+    for (let i = 0; i < data.length; i++) {
+      await Subcategory.findOrCreate({
+        where: {
+          name: data[i].name,
+          CategoryId: data[i].category_id,
+        },
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 const bulkCreateBrands = async () => {
   try {
@@ -41,6 +77,8 @@ const bulkCreateProducts = async () => {
             2
           ),
           description: data[i].description,
+
+          weight: data[i].weight,
 
           stock: data[i].stock,
 
@@ -79,4 +117,6 @@ module.exports = {
   bulkCreateBrands,
   bulkCreateProducts,
   bulkCreateUsers,
+  bulkCreateSubcategories,
+  bulkCreateCategories,
 };
