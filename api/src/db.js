@@ -59,21 +59,25 @@ const {
   Product,
   User,
   Subcategory,
-  Order,
-  Order_detail
+  
 } = sequelize.models;
 
 //Entity-relations
-Brand.hasMany(Product);
+Product.belongsTo(Subcategory);
+Subcategory.hasMany(Product);
+
+Product.belongsTo(Category);
+Category.hasMany(Product);
+
 Product.belongsTo(Brand);
+Brand.hasMany(Product);
 Category.hasMany(Subcategory);
 Subcategory.belongsTo(Category);
-Order.hasMany(Order_detail);
-Order_detail.belongsTo(Order);
-Product.hasMany(Order_detail);
-Order_detail.belongsTo(Product);
-User.hasMany(Order);
-Order.belongsTo(User);
+
+
+
+
+
 
 
 module.exports = {

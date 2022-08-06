@@ -1,7 +1,9 @@
 const {
     Product,
     Brand,
-    User
+    User, 
+    Category,
+    Subcategory
   } = require('../db');
 
 
@@ -18,7 +20,9 @@ const {
         image,       
         stock,             
         BrandId,
-        weight
+        weight,
+       CategoryId
+
       } = req.body;
       if (
         !name ||        
@@ -27,7 +31,8 @@ const {
         !price ||
         !description ||     
         !stock ||
-        ! weight
+        ! weight ||
+       ! CategoryId
       ) {
         res.status(402).send({ errorMsg: 'Missing data.' });
       } else {
@@ -39,7 +44,8 @@ const {
             image,           
             stock,
             BrandId,
-            weight
+            weight,
+           CategoryId
           },
         });
         created
@@ -64,7 +70,8 @@ const {
         image,       
         stock,       
         BrandId,
-        weight      
+        weight,
+        CategoryId      
       } = req.body;
       if (
         !name ||
@@ -73,7 +80,8 @@ const {
         !image ||      
         !stock ||        
         !BrandId ||  
-        ! weight||      
+        ! weight||
+        !CategoryId ||      
         !id
       ) {
         res.status(402).send({ errorMsg: 'Missing data.' });
@@ -93,7 +101,8 @@ const {
             image,           
             stock,           
             BrandId,
-            weight         
+            weight,
+            CategoryId         
           });
           res.status(200).send({
             successMsg: 'Product successfully updated.',
@@ -120,7 +129,17 @@ const {
             {
               model: Brand,
               attributes: ['name'],
-            }                     
+            },
+            {
+              model: Category,
+              attributes: ['name', 'id'],
+              include: [
+                {
+                  model: Subcategory,
+                  attributes: ['name', 'id'],
+                },
+             ],
+           }              
           ],
         });
         if (!singleProduct) {
@@ -131,12 +150,15 @@ const {
             name: singleProduct.name,
             image: singleProduct.image,
             price: singleProduct.price,
-            description: singleProduct.description,           
-            stock: singleProduct.stock,            
+            description: singleProduct.description,     
+            stock: singleProduct.stock,           
             BrandId: singleProduct.BrandId,
-            brand: singleProduct.Brand.name,           
+            brand: singleProduct.Brand.name,
+            weight: singleProduct.weight,            
             isActive: singleProduct.isActive,
-            weight: singleProduct.weight
+           SubcategoryId: singleProduct.Category.Subcategories[0].id,      
+          Subcategory: singleProduct.Category.Subcategories[0].name,
+            category: singleProduct.Category.name,  
           }
             
             
@@ -158,13 +180,22 @@ const {
           {
             model: Brand,
             attributes: ['name'],
-          }     
+          },
+          {
+            model: Category,
+            attributes: ['name', 'id'],
+            include: [
+              {
+                model: Subcategory,
+                attributes: ['name', 'id'],
+              },
+           ],
+         }     
         ],
       });
       if (!dataProduct) {
         res.status(404).send({ errorMsg: 'There are no products available.' });
       } else {
-        // totalreviews = dataProduct[0].reviews.length >0 ? dataProduct[0].reviews.map((review) => {return { review }}) : [],
         dataProduct = dataProduct.map((product) => {
           return {
             id: product.id,
@@ -176,7 +207,10 @@ const {
             BrandId: product.BrandId,
             brand: product.Brand.name,
             weight: product.weight,            
-            isActive: product.isActive                       
+            isActive: product.isActive,
+           SubcategoryId: product.Category.Subcategories[0].id,      
+          Subcategory: product.Category.Subcategories[0].name,
+            category: product.Category.name,                       
           };
         });
   
@@ -189,32 +223,55 @@ const {
     }
   };
   
-  const deleteProduct = async (req, res) => {
-    try {
-      const id = req.params.id;
-  
-      
-  
-      if (!id) {
-        res.status(400).send({ errorMsg: 'Missing data.' });
-      } else {
-        Product.delete({ where: { id: id } });
-        res.status(200).send({
-          successMsg: 'Product deleted in Database',
-          data: `Product id: ${id}`,
-        });
-      }
-    } catch (error) {
-      res.status(500).send({ errorMsg: error.message });
+ const deleteProduct = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+   // const { isActive } = req.body;
+
+    if (!id) {
+      res.status(400).send({ errorMsg: 'Missing data.' });
+    } else {
+      Product.destroy( { where: { id: id } });
+      res.status(200).send({
+        successMsg: 'Product deleted in Database',
+        data: `Product id: ${id}`,
+      });
     }
-  };
-  
+  } catch (error) {
+    res.status(500).send({ errorMsg: error.message });
+  }
+};
+
+const setInactiveProduct = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const { isActive } = req.body;
+
+    if (!id) {
+      res.status(400).send({ errorMsg: 'Missing data.' });
+    } else {
+      Product.update({ isActive: isActive }, { where: { id: id } });
+      res.status(200).send({
+        successMsg: 'Product deleted in Database',
+        data: `Product id: ${id}`,
+      });
+    }
+  } catch (error) {
+    res.status(500).send({ errorMsg: error.message });
+  }
+};
+
+
+
+
   module.exports = {
     createProduct,
     updateProduct,
     getProducts,
     getSingleProduct,
     deleteProduct,
-   
+   setInactiveProduct
   };
   

@@ -1,8 +1,10 @@
 const {
   Brand,
+ 
   Category,
-  Product,
   Subcategory,
+  Product,
+ 
   User,
 } = require("../db");
 const fs = require("fs");
@@ -83,6 +85,8 @@ const bulkCreateProducts = async () => {
           stock: data[i].stock,
 
           BrandId: data[i].BrandId,
+
+        CategoryId: data[i].SubcategoryId
         },
       });
     }

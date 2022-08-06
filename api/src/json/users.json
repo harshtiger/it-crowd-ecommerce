@@ -6,6 +6,15 @@
         "email": "test@email.com",
         "role": "admin",
         "isActive": true
+         },
+         
+    {
+        "name": "test ",
+        "surname": "user",
+        "password": "sarasa1",
+        "email": "test2@email.com",
+        "role": "user",
+        "isActive": true
          }
 
 ]
