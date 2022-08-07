@@ -42,6 +42,9 @@ const AdminDropdown = (): JSX.Element => {
         {userState && userState.name}
       </a>
       <DropdownMenu className="dropdown-menu">
+      <Link className="dropdown-item" to="/createbrand">
+          Create brand
+        </Link>
         <Link className="dropdown-item" to="/createProduct">
           Create product
         </Link>

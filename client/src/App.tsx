@@ -18,7 +18,7 @@ import CreateCategories from "./components/products/categories/create/CreateCate
 import AdminUserMode from "./components/users/AdminPanel/AdminModeUsers";
 import UserProfile from "./components/users/profile/UserProfile";
 import DeleteCategories from "./components/products/categories/delete/DeleteCategories";
-
+import BrandCreate from "./components/products/brands/BrandCreate"
 import OrdersAdmin from "./components/admin/ordersAdmin/OrdersAdmin";
 import PreviewOrder from "./components/checkout/previewOrder/PreviewOrder";
 
@@ -57,6 +57,17 @@ function App(): JSX.Element {
             element={
               user && user.role == "admin" ? (
                 <CreateCategories />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
+
+<Route
+            path="/createBrand"
+            element={
+              user && user.role == "admin" ? (
+                <BrandCreate />
               ) : (
                 <Navigate to="/login" />
               )

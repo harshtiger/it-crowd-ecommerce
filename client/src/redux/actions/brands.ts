@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Dispatch } from "redux";
 
-import { TYPES_BRANDS } from "../interface";
+import { TYPES_BRANDS, Brand } from "../interface";
 
 const URL = "/api/brands";
 
@@ -14,4 +14,16 @@ export function getBrands() {
       payload: brands.data.data,
     });
   };
+}
+
+
+export function createBrands(brand: Brand, token: string) {
+  return async function (dispatch: Dispatch) {
+    await axios.post(URL, brand, {
+     
+      headers: {
+        'auth-token': token
+      }
+    })
+  }
 }
