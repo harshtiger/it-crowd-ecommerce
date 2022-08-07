@@ -2,7 +2,9 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, NODE_ENV } = process.env;
+
+console.log(NODE_ENV);
 
 //Connection
 let sequelize =
@@ -11,7 +13,7 @@ let sequelize =
         database: DB_NAME,
         dialect: "postgres",
         host: DB_HOST,
-        port: 3003,
+        port: 5432,
         username: DB_USER,
         password: DB_PASSWORD,
         pool: {
@@ -71,7 +73,7 @@ Category.hasMany(Product);
 
 Product.belongsTo(Brand);
 Brand.hasMany(Product);
-Category.hasMany(Subcategory);
+ Category.hasMany(Subcategory);
 Subcategory.belongsTo(Category);
 
 
