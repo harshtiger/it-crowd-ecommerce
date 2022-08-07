@@ -6,7 +6,7 @@ const {
   bulkCreateUsers,
   bulkCreateCategories,
   bulkCreateSubcategories
-} = require("../api/src/utils/fillScript");
+} = require("./src/utils/fillScript");
 
 const PORT = process.env.PORT || 3001;
 
