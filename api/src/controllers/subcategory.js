@@ -54,7 +54,7 @@ const deleteSubcategory = async (req, res) => {
         SubcategoryId: id,
       },
     });
-    if (dataProduct.length <=0) {
+    if (dataProduct.length <=0) {                             // we do this so if there are products with that subcategory, it can not be deleted because it'd mess it all due to relations!
       let deletedSubcategory = await Subcategory.destroy({
         where: {
           id,
