@@ -45,6 +45,9 @@ const AdminDropdown = (): JSX.Element => {
       <Link className="dropdown-item" to="/createbrand">
           Create brand
         </Link>
+        <Link className="dropdown-item" to="/deletebrand">
+          Delete brand
+        </Link>
         <Link className="dropdown-item" to="/createProduct">
           Create product
         </Link>

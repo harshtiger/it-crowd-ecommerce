@@ -27,3 +27,18 @@ export function createBrands(brand: Brand, token: string) {
     })
   }
 }
+
+export const deleteBrand = (id: string, token: string) => {
+  try {
+    return async function (dispatch: Dispatch) {
+     // console.log(id)
+      await axios.delete(URL + `/${id}`, {
+        headers: {
+          'auth-token': token
+        }
+      })
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}

@@ -23,6 +23,7 @@ import OrdersAdmin from "./components/admin/ordersAdmin/OrdersAdmin";
 import PreviewOrder from "./components/checkout/previewOrder/PreviewOrder";
 
 import { State } from "./redux/reducers";
+import DeleteBrands from "./components/products/brands/delete/DeleteBrands";
 
 function App(): JSX.Element {
   const dispatch = useDispatch();
@@ -74,6 +75,17 @@ function App(): JSX.Element {
             }
           />
 
+<Route
+            path="/deletebrand"
+            element={
+              user && user.role == "admin" ? (
+                <DeleteBrands />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
+
           <Route
             path="/productsAdminMode"
             element={
@@ -110,6 +122,8 @@ function App(): JSX.Element {
               )
             }
           />
+
+
 
           <Route
             path="/ordersAdmin"
