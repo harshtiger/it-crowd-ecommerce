@@ -36,6 +36,12 @@ DB_HOST= // your db host, on posgre most of the time is 5432
 SECRET_KEY=  // provide a secret word
 NODE_ENV= // if production, a specific congif will be run. Leave blank for local running
 
+then, navigate to CLIENT directory
+
+npm i   // to install dependencies
+
+npm start to run the project's frontend
+
 
 
 DESCPRIPTION:
@@ -57,14 +63,19 @@ by an auth-token header.
 /brands     : retrieves a list of aviable brands
 /categories     : retrieves a list of aviable categories
 /subcategories     : retrieves a list of aviable subcategories
+ 
+ 
+ note: all post, put and delete methods require authentication.
+
+/api post endpoints: 
 
 
-/api post endpoints.
+/brands    : create a brand 
 
-/brands    : create a brand
+
 
 /signup   : create a user account
-
+/signin   : log into the app
 
 
 /api/admin post endpoints: they require an auth method to be used
@@ -73,6 +84,47 @@ by an auth-token header.
 /products  : add a product
 /categories : create a category
 /subcategories : create a subcategory
+
+
+/api/admin  put endpoints
+
+/products/inactive/:id   set a product as inactive
+/products/:id   update a product
+
+
+/api/admin delete endpoints
+
+
+/products/del/:id  delete a product
+/subcategories/:id delete a subcategory
+/category/:id delete a category
+/brands/:id delete a brand
+
+
+the database consists of a postgre SQL enviroment.
+
+
+CLIENT:
+
+Technologies: React, Redux, Typescript, React router, Bootstrap on styles and styled components.  
+
+A simple interface where the user can view a series of products cards, it allows the user to search for a product, view products filtering by category or brand
+Do orderings by price from higher to lower, lower to higher, A-Z, Z-A, create an account, select products and add them into a cart.
+Admins can publish products, set them as inactive, delete them, create categories, subcategories and brands, update products, delete products, categories, subcategories, brands
+
+It's meant to be scalable as a project.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
